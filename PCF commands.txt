@@ -1,0 +1,141 @@
+****************************************************************************************************
+To login 
+
+1. cf api 
+
+to check the api endpoint, alternatively you can login to PWS -> tools 
+
+2.cf login -a api.run.pivotal.io --skip-ssl-validation
+****************************************************************************************************
+cf login
+
+cf login -a api.run.pivotal.io --skip-ssl-validation
+****************************************************************************************************
+To review your current API endpoint ,user,org,space
+cf target
+****************************************************************************************************
+Push the applications
+cf push node --random-route -m 128M
+****************************************************************************************************
+To find out our application url
+cf apps
+****************************************************************************************************
+To visit the url
+curl {{application_url}}
+****************************************************************************************************
+Delete the apps
+
+cf delete 
+****************************************************************************************************
+what are the 3 core tenants of pcf ?
+
+1.self served platform for developers => allows you to easily push application
+2.4 levels of high availibility => Logs and Metrics
+3.Iaas Independent 
+
+****************************************************************************************************
+cf push articulate -p ./articulate-0.0.1-SNAPSHOT.jar -m 512M --random-route --no-start
+
+cf logs articulate
+
+cf start articulate
+
+cf logs articulate | grep "API\|CELL"
+
+cf app articulate (to look at health and status of the application)
+
+cf scale articulate -m 1G (vertical scaling)
+
+cf scale articulate -i 3 (horizontal scaling, increasing the instance to 3)
+
+cf events articulate (history of our application)
+
+cf marketplace
+
+cf create-service p-ysql 100mb-dev attendee-mysql
+
+cf bind-service attendee-service attendee-mysql
+
+cf restage attendee-service
+
+cf restart attendee-service
+
+cf env attendee-service
+
+cf create-user-provided-service attendee-service -p uri
+
+cf logs attendee-service --recent
+
+cf create-service cleardb spark attendee-service
+
+cf bind-service attendee-service attendee-mysql
+
+cf bind-service articulate attendee-service
+
+cf | grep manifest
+
+cf create-app-manifest attendee-service -p ./manifest.yml
+
+cat manifest.yml
+
+nano manifest.yml
+
+cf t
+
+cf security-groups
+
+cf staging-security-groups
+
+cf running-security-groups
+
+cf unbind-running-security-group all_open
+
+create-security-group mysql-dnr ./asg.json
+
+cf bind-security-group mysql-dnr dave dev
+
+cf create-user-provided-service articulate-log-drain -l syslog://logs6.papertrailapp.com:37188
+
+cf map-routes articulate-v2 domain -n host
+
+cf unmap-route articulate domain -n host
+
+cf m -s app-autoscaler
+
+cf create-service app-autoscaler gold autoscaler
+
+cf create-service loadimpact lifree load
+
+cf scale articulate -m 1G -i 1
+
+cf create-service newrelic standard newrelicDemo
+
+cf bind-service articulate newrelicDemo
+
+ cf buildpacks
+ 
+ cf push articulate -p ./articulate-0.0.1-SNAPSHOT.jar -b https://github.com.cloudfoundry/java-builpack.git
+ 
+ cf set-env articulate JBP_CONFIG_OPEN_JDK_JRE"{jre: { version: 1.8.0_45}}"
+ 
+ cf push articulate -p ./articulate-0.2.jar -b https://github.com/cloudfoundry/java-buildpack.git
+ 
+ cf set-env articulate JBP_CONFIG_OPEN_JDK_JRE "{jre: { version: 1.8.0_45}}"
+
+ cf push mongodb-service-broker -p build/libs/cloudfoundry-mongodb-service-broker.jar -m 768M --random-route --no-start
+ 
+ cf set-env mongodb-service-broker SERVICE_ID mongodb-service-broker-{{intials}}
+ 
+ cf set-env mongodb-service-broker SERVICE_NAME MongoDB-{{intials}}
+ 
+ cf set-env mongodb-service-broker PLAN_ID mongo-plan-{{intials}} 
+ 
+ cf start mongodb-service-broker
+ 
+ cf create-service-broker mongodb-service-broker-{{intials}} pivotal keepitsimple {{service_broker_app_url}} --space-scoped
+ 
+ cf create-service-broker mongodb-service-broker-{{intials}} pivotal keepitsimple https://mongodb-service-broker-unsociable-anemophily.cfapps.io --space-scoped
+ 
+ cf service-brokers
+ 
+ cf service-access
