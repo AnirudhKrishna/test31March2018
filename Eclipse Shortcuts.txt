@@ -1,0 +1,50 @@
+CTRL + M  MAXIMIZE/MINIMIZE
+Ctrl + Space Auto Suggestion
+Ctrl + 1 What suggestions are offered?
+
+Conditional BreakPoint
+
+Ctrl + Shift + L  Quick Text Search
+
+windows->preferences->keys LIST of all shortcuts  defined
+
+Alt + Up Arrow (Down Arrow) -> Move Code
+
+***********************************************************************
+ATTACH SOURCE 
+
+Attach Source -> External Location -> Give Path of "src.zip" which is present in java => jdk
+
+***********************************************************************
+Ctrl + Shift + R (and T)  Open Resource
+
+F4 or Ctrl + T Type hierarchy
+
+Ctrl + / comment uncomment
+
+Ctrl + Q last line edited
+
+Ctrl + O Outline of the class
+
+BreadCrum to see which file we are in , in which project 
+
+Mark Occurences
+
+Refactor -> Extract Method
+
+Refactor -> Inline
+
+Rename a variable, method,className , Interface name by using Refactor
+
+Source -> Overide method from superClass
+
+
+windows  -> preferences ->search for formatter(java)
+
+windows  -> preferences ->search for saveAction(java)-> select perform the selected option save
+
+windows  -> perspective ->open perspective->Java Browsing(For understanding a project)
+
+
+
+
